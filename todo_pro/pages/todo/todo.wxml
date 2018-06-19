@@ -1,0 +1,32 @@
+<!--pages/todo/todo.wxml-->
+
+
+
+
+
+<view class='view'>
+
+<view   bindinput='inputviewtap'>
+  <input id='inputID' type='text' bindblur="bindKeyblur"  class='input' placeholder='请输入待办事项' value='{{inputValue}}'> </input> 
+</view>
+
+<view wx:for="{{todolist}}" wx:for-item='todolist' wx:key='textStyle'  class='todo' wx:if='{{todolist.available}}' >
+<label class='checkLable' id='{{todolist.id}}'   bindtap='bindViewTap'>
+   <checkbox  id='{{todolist.id}}' value='{{todolist.id}}' checked='{{todolist.checked}}'>
+   </checkbox>
+   <text  id='{{todolist.id}}' wx:key="textStyle" class='{{todolist.textStyle}}'>{{todolist.text}}</text>
+</label>
+
+   <icon  bindtap='clear' type='clear' class='iconDel' id='{{todolist.id}}'></icon>
+
+</view>
+
+
+<view>
+<text bindtap="touchmovedel" style='display:none' >{{value}}</text>
+</view>
+
+
+</view>
+
+<button class="btn" type="default"  bindtap='logs' size="mini">logs</button>
